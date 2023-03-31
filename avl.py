@@ -11,24 +11,31 @@ class avl_Node():
 
 class AVLTree:
     def insert_node(self, root, value):
+        # BST
         if not root:
             return avl_Node(value)
         elif value < root.value:
             root.left = self.insert_node(root.left, value)
         else:
             root.right = self.insert_node(root.right, value)
+
+        # Height update
         root.height = 1 + max(self.get_height(root.left), self.get_height(root.right)) # noqa 5501
+
+        # Check tree balance
         balance = self.get_balance(root)
+
+        # Correct balance
         if balance > 1:
             if value < root.left.value:
                 return self.right_rotate(root)
-            else:
+            elif value > root.left.value: # equal won't change anything
                 root.left = self.left_rotate(root.left)
                 return self.right_rotate(root)
         if balance < -1:
             if value > root.right.value:
                 return self.left_rotate(root)
-            else:
+            elif value < root.right.value: # equal won't change anything
                 root.right = self.right_rotate(root.right)
                 return self.left_rotate(root)
         return root
@@ -87,11 +94,11 @@ class AVLTree:
             return False
 
 
-tree = AVLTree()
-root = None
-nums = [33, 13, 52, 9, 21, 61, 8, 11, 70]
-for num in nums:
-    root = tree.insert_node(root, num)
-tree.printHelper(root, "", True)
-print(tree.get_height(root))
-print(tree.exists(12, root), tree.exists(21, root))
+# tree = AVLTree()
+# root = None
+# nums = [33, 13, 52, 9, 21, 61, 8, 11, 70]
+# for num in nums:
+#     root = tree.insert_node(root, num)
+# tree.printHelper(root, "", True)
+# print(tree.get_height(root))
+# print(tree.exists(12, root), tree.exists(21, root))
