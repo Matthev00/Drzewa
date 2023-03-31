@@ -35,11 +35,11 @@ class BSTNode:
 
         if val < self.val:
             if self.left:
-                return self.left.search(val)
+                return self.left.exists(val)
             return False
 
         if self.right:
-            return self.right.search(val)
+            return self.right.exists(val)
 
         return False
 
@@ -48,6 +48,12 @@ class BSTNode:
         if self is None:
             return self
 
+        if self.right is None:
+            return self.left
+
+        if self.left is None:
+            return self.right
+
         if val < self.val:
             self.left = self.left.delete(val)
             return self
@@ -55,12 +61,6 @@ class BSTNode:
         if val > self.val:
             self.right = self.right.delete(val)
             return self
-
-        if self.right is None:
-            return self.left
-
-        if self.left is None:
-            return self.right
 
         min_bigger = self.right
         while min_bigger.left:
@@ -92,6 +92,7 @@ def main():
         bst.insert(number)
 
     bst.draw()
+    print('======================')
     bst.delete(3)
     bst.draw()
 
