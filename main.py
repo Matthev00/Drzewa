@@ -141,7 +141,7 @@ def main():
     # numbers_pool = [randint(1, 30000) for _ in range(10000)]
     # uncomment to create plot
     # create_build_plot()
-    create_search_plot()
+    # create_search_plot()
     # create_bst_removing_plot()
 
 

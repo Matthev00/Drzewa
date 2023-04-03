@@ -14,6 +14,8 @@ class AVLTree:
         # BST
         if not root:
             return avl_Node(value)
+        if value == root.value:
+            return root
         elif value < root.value:
             root.left = self.insert_node(root.left, value)
         else:
