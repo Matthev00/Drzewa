@@ -139,12 +139,10 @@ def main():
     sys.setrecursionlimit(1000000)
     # generating this takes minutes, importing pregenerated from nums.py
     # numbers_pool = [randint(1, 30000) for _ in range(10000)]
-    # TODO: odczyty czasu niepoprawne w wsl, czekam kilka minut, dostaje kilka setnych
-    # TODO: wygenerować wykresy ponownie
     # uncomment to create plot
     # create_build_plot()
-    # create_search_plot()
-    create_bst_removing_plot()
+    create_search_plot()
+    # create_bst_removing_plot()
 
 
 if __name__ == '__main__':
